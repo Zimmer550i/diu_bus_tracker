@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     
    <application
-        android:label="diu_bus_tracker"
+        android:label="DIU Bus Tracker"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
