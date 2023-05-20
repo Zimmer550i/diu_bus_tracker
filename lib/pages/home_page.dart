@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:diu_bus_tracker/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:lottie/lottie.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,8 +19,27 @@ class _HomePageState extends State<HomePage> {
   int selected = -1;
   late InAppWebViewController _controller;
 
+  void permission() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      await Geolocator.requestPermission();
+    }
+
+    //pos is Ready to be used for longtitude and latitude
+    Position pos = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    permission();
+  }
+
   @override
   Widget build(BuildContext context) {
+    permission();
     return Scaffold(
       body: Stack(
         children: [
@@ -34,6 +54,14 @@ class _HomePageState extends State<HomePage> {
               setState(() {
                 isLoading = false;
               });
+            },
+            androidOnGeolocationPermissionsShowPrompt:
+                (controller, origin) async {
+              return GeolocationPermissionShowPromptResponse(
+                origin: origin,
+                allow: true,
+                retain: true,
+              );
             },
           ),
           Column(children: [

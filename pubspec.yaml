@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_inappwebview: ^5.7.2+3
+  geolocator: ^9.0.2
   lottie: ^2.3.2
 
 dev_dependencies:
