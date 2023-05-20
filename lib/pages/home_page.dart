@@ -27,6 +27,9 @@ class _HomePageState extends State<HomePage> {
             initialUrlRequest: URLRequest(
               url: Uri.parse(mapsUrl),
             ),
+            onWebViewCreated: (controller) {
+              _controller = controller;
+            },
             onLoadStop: (controller, url) {
               setState(() {
                 isLoading = false;
@@ -83,44 +86,48 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isExpanded = !isExpanded;
+                      });
+                    },
+                    onPanUpdate: (details) {
+                      if (details.delta.dy < 0) {
                         setState(() {
-                          isExpanded = !isExpanded;
+                          isExpanded = true;
                         });
-                      },
-                      onPanUpdate: (details) {
-                        if (details.delta.dy < 0) {
-                          setState(() {
-                            isExpanded = true;
-                          });
-                        }
+                      }
 
-                        if (details.delta.dy > 0) {
-                          setState(() {
-                            isExpanded = false;
-                          });
-                        }
-                      },
-                      child: Container(
-                        height: 10,
-                        width: 40,
-                        decoration: const BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(12),
+                      if (details.delta.dy > 0) {
+                        setState(() {
+                          isExpanded = false;
+                        });
+                      }
+                    },
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: 10,
+                            width: 40,
+                            decoration: const BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(12),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                  const Text(
-                    "Routes",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
+                        const Text(
+                          "Routes",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Expanded(
