@@ -1,16 +1,13 @@
-# diu_bus_tracker
+# DIU Bus Tracker
 
-A new Flutter project.
+This app is especially made for Android using the flutter framework. This App consists informations of Routes of DIU Transportation System. 
 
-## Getting Started
+## Future Updates
+- Login System
+- Real Time Tracking of Busses
 
-This project is a starting point for a Flutter application.
+## Download
+- [v0.2-beta apk file](https://github.com/Zimmer550i/diu_bus_tracker/releases/download/v0.2-beta/app-release.apk)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## No Google Maps API
+Due to Credit Card requirement for Google Maps API I couldn't implement the proper google maps here. Rather I used in-app Web View to view the map and hide it's UI. It took a lot more time than if I had that API. 
