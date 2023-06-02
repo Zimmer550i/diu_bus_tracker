@@ -68,11 +68,17 @@ class _HomePageState extends State<HomePage> {
           ),
           Column(children: [
             AppBar(
-              title: const Text(
-                'DIU Bus Tracker',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
+              title: const Hero(
+                tag: "logo",
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: Text(
+                    'DIU Bus Tracker',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28,
+                    ),
+                  ),
                 ),
               ),
               centerTitle: true,

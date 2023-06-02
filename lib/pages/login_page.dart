@@ -20,11 +20,13 @@ class _LoginPageState extends State<LoginPage> {
   void auth() async {
     setState(() {
       isLoading = true;
+      wrongCred = false;
     });
     await Future.delayed(
       const Duration(seconds: 1),
     );
     if (emailController.text == "admin" && passwordController.text == "admin") {
+      // ignore: use_build_context_synchronously
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => const HomePage(),
@@ -56,6 +58,19 @@ class _LoginPageState extends State<LoginPage> {
                       child: Container(),
                     ),
                     LottieBuilder.asset("assets/busAnimated.json"),
+                    const Hero(
+                      tag: "logo",
+                      child: Material(
+                        type: MaterialType.transparency,
+                        child: Text(
+                          'DIU Bus Tracker',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28,
+                          ),
+                        ),
+                      ),
+                    ),
                     wrongCred
                         ? const Text(
                             "User Authentication failed.",
@@ -135,13 +150,15 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
+                    const Text(""),
                     ElevatedButton(
                       onPressed: auth,
                       style: ElevatedButton.styleFrom(
                         // fixedSize: Size.fromWidth(
                         //   MediaQuery.of(context).size.width / 3,
                         // ),
-                        fixedSize: Size(MediaQuery.of(context).size.width / 3, 50),
+                        fixedSize:
+                            Size(MediaQuery.of(context).size.width / 3, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
                         ),
@@ -151,6 +168,16 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.white,
                             )
                           : const Text("Login"),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Don't have an Account?"),
+                        TextButton(
+                          onPressed: () {},
+                          child: const Text("Sign In"),
+                        ),
+                      ],
                     ),
                     Expanded(
                       child: Container(),
