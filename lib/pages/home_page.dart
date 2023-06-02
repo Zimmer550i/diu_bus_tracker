@@ -29,6 +29,8 @@ class _HomePageState extends State<HomePage> {
     Position pos = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
+
+    pos = pos;
   }
 
   @override
@@ -160,16 +162,21 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Expanded(
                     child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
                       itemCount: routesList.length + 1,
                       itemBuilder: (context, index) {
                         if (index == routesList.length) {
                           return const Text(
-                            "\n\nMade by:\nSunny Gomez\nZimmer550i",
+                            "\n\nMade by:\nZimmer550i\nSunny Gomes",
                             textAlign: TextAlign.center,
                           );
                         }
                         return Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(
+                            bottom: 16,
+                            left: 8,
+                            right: 8,
+                          ),
                           child: InkWell(
                             onTap: () {
                               if (selected != index) {
