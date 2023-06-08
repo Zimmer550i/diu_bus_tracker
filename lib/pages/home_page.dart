@@ -52,6 +52,11 @@ class _HomePageState extends State<HomePage> {
             onWebViewCreated: (controller) {
               _controller = controller;
             },
+            onLoadStart: (controller, url) {
+              setState(() {
+                isLoading = true;
+              });
+            },
             onLoadStop: (controller, url) {
               setState(() {
                 isLoading = false;
@@ -85,7 +90,11 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: isLoading
-                  ? LottieBuilder.asset('assets/busAnimated.json')
+                  ? Center(child: CircularProgressIndicator(
+                    strokeWidth: 10,
+                    color: Colors.blue,
+                    backgroundColor: Colors.blueAccent.shade100,
+                  ),)
                   : AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
                       child: BackdropFilter(

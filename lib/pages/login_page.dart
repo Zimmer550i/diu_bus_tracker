@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Material(
                         type: MaterialType.transparency,
                         child: Text(
-                          'DIU Bus Tracker',
+                          'DIU BUS TRACKER',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 28,
