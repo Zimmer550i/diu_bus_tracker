@@ -8,7 +8,7 @@ This app is especially made for Android using the flutter framework. This App co
 ## Download
 - [v0.3-beta apk](https://github.com/Zimmer550i/diu_bus_tracker/releases/download/v0.3-beta/app-release.apk)
 
-##🔑 Access Information:
+## 🔑 Access Information
 Username: admin
 Password: admin
 
